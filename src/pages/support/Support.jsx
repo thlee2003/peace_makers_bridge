@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Support.module.css';
 
+import Header from '../../components/header/Header';
+
 const Support = () => {
   const [supprot, setSupprot] = useState('');
   //   video 입력
@@ -54,6 +56,7 @@ const Support = () => {
 
   return (
     <div className={styles.content}>
+      <Header />
       <h1>후원 페이지</h1>
       {/* 소개 */}
       <h2>소개(가로: 360px, 세로: 180px)</h2>

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styles from './Main.module.css';
 
+import Header from '../../components/header/Header';
+
 const Main = () => {
   const [main1, setMain1] = useState('');
   const [main2, setMain2] = useState('');
@@ -61,6 +63,7 @@ const Main = () => {
 
   return (
     <div className={styles.content}>
+      <Header />
       <h1>메인 페이지</h1>
       {/* 슬라이드 */}
       <h2>슬라이드 이미지(가로: 360px, 세로: 620px)</h2>

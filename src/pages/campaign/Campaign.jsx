@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Campaign.module.css';
 
+import Header from '../../components/header/Header';
+
 const Campaign = () => {
   const [phrase, setPhrase] = useState('');
   const [introduction, setIntroduction] = useState('');
@@ -64,6 +66,7 @@ const Campaign = () => {
 
   return (
     <div className={styles.content}>
+      <Header />
       <h1>소개 페이지</h1>
       {/* 이달의 소개 문구 */}
       <h2>이달의 평화 문구</h2>
