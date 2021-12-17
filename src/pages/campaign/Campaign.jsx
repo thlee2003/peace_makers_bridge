@@ -84,7 +84,7 @@ const Campaign = () => {
           <input className={styles.file} type="file" id="input" onChange={(e) => onFileChange(e, 1)} />
           <div className={styles.text}>
             <p>내용</p>
-            <textarea value={introduction} onChange={(e) => setIntroduction(e.target.value)}></textarea>
+            <textarea className={styles.campaigntextarea} value={introduction} onChange={(e) => setIntroduction(e.target.value)}></textarea>
           </div>
         </div>
       </div>
@@ -98,7 +98,7 @@ const Campaign = () => {
           </div>
           <div className={styles.text}>
             <p>내용</p>
-            <textarea value={FAQ1} onChange={(e) => setFAQ1(e.target.value)}></textarea>
+            <textarea className={styles.campaigntextarea} value={FAQ1} onChange={(e) => setFAQ1(e.target.value)}></textarea>
           </div>
         </div>
         <div className={styles.stduyImage}>
@@ -108,7 +108,7 @@ const Campaign = () => {
           </div>
           <div className={styles.text}>
             <p>내용</p>
-            <textarea value={FAQ2} onChange={(e) => setFAQ2(e.target.value)}></textarea>
+            <textarea className={styles.campaigntextarea} value={FAQ2} onChange={(e) => setFAQ2(e.target.value)}></textarea>
           </div>
         </div>
         <div className={styles.stduyImage}>
@@ -118,7 +118,7 @@ const Campaign = () => {
           </div>
           <div className={styles.text}>
             <p>내용</p>
-            <textarea value={FAQ3} onChange={(e) => setFAQ3(e.target.value)}></textarea>
+            <textarea className={styles.campaigntextarea} value={FAQ3} onChange={(e) => setFAQ3(e.target.value)}></textarea>
           </div>
         </div>
       </div>

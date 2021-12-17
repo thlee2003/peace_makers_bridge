@@ -19,7 +19,7 @@
   justify-content: center;
 }
 
-.campaignImage img {
+.campaignImage .imglist {
   border: 1px solid black;
   width: 360px;
   height: 180px;
@@ -48,4 +48,8 @@ button {
   font-size: 30px;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.imglist {
+  overflow-y: auto;
 }

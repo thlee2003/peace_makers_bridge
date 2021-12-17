@@ -64,7 +64,7 @@ const Support = () => {
           <input className={styles.file} type="file" id="input" onChange={(e) => onFileChange(e, 1)} />
           <div className={styles.text}>
             <p>내용</p>
-            <textarea value={supprot} onChange={(e) => setSupprot(e.target.value)}></textarea>
+            <textarea className={styles.supprottextarea} value={supprot} onChange={(e) => setSupprot(e.target.value)}></textarea>
           </div>
         </div>
       </div>

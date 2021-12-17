@@ -45,11 +45,11 @@
   margin: 20px;
 }
 
-textarea {
+.supprottextarea {
   font-size: 18px;
   margin-top: 12px;
-  width: 220px;
-  height: 280px;
+  width: 420px;
+  height: 200px;
 }
 
 .text {

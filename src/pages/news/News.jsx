@@ -4,30 +4,30 @@ import styles from './News.module.css';
 const News = () => {
   const [introduction, setIntroduction] = useState('');
   const [image, setImage] = useState([]);
+  const [imageName, setImageName] = useState([]);
 
   const onclick = () => {
     console.log(image);
+    console.log(imageName);
   };
 
   const onFileChange = (e, num) => {
     let array = [];
     array.push(e.target.files);
-    console.log(array);
     encodeFileBase64(array);
   };
 
   const encodeFileBase64 = (file) => {
-    console.log(file[0].length);
     if (file) {
+      setImage([]);
+      setImageName([]);
       for (let i = 0; i < file[0].length; i++) {
         let reader = new FileReader();
-        console.log(file[0][i]);
         reader.readAsDataURL(file[0][i]);
         reader.onload = () => {
           let base64 = reader.result;
-          console.log(`img${i + 1}`);
-          console.log(image);
           setImage((image) => [...image, base64]);
+          setImageName((imageName) => [...imageName, file[0][i].name]);
         };
         reader.onerror = function (error) {
           console.log('error:', error);
@@ -36,15 +36,29 @@ const News = () => {
     }
   };
 
+  const p = () => {
+    const result = [];
+    for (let i = 0; i < imageName.length; i++) {
+      result.push(
+        <p key={i} style={{ margin: '4px', fontSize: '18px' }}>
+          {imageName[i]}
+        </p>
+      );
+    }
+    return result;
+  };
+
   return (
     <div className={styles.content}>
       <h1>소개 페이지</h1>
       {/* 소개 */}
-      <h2>소개()</h2>
+      <h2>소개</h2>
       <div className={styles.Images}>
         <div className={styles.campaignImage}>
           <h3>메인 이미지 1</h3>
-          <img src={image.img1} alt="" />
+          <div className={styles.imglist}>
+            <p>{p()}</p>
+          </div>
           <input className={styles.file} type="file" id="input" multiple="multiple" onChange={(e) => onFileChange(e, 1)} />
           <div className={styles.text}>
             <h3>내용</h3>

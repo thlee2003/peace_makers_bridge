@@ -90,7 +90,7 @@ const Main = () => {
           <input className={styles.file} type="file" id="input" onChange={(e) => onFileChange(e, 4)} />
           <div className={styles.text}>
             <p>내용</p>
-            <textarea value={main1} onChange={(e) => setMain1(e.target.value)}></textarea>
+            <textarea className={styles.maintextarea} value={main1} onChange={(e) => setMain1(e.target.value)}></textarea>
           </div>
         </div>
         <div className={styles.mainImage}>
@@ -99,7 +99,7 @@ const Main = () => {
           <input className={styles.file} type="file" id="input" onChange={(e) => onFileChange(e, 5)} />
           <div className={styles.text}>
             <p>내용</p>
-            <textarea value={main2} onChange={(e) => setMain2(e.target.value)}></textarea>
+            <textarea className={styles.maintextarea} value={main2} onChange={(e) => setMain2(e.target.value)}></textarea>
           </div>
         </div>
       </div>
@@ -116,7 +116,7 @@ const Main = () => {
           </div>
           <div className={styles.text}>
             <p>내용</p>
-            <textarea value={study1} onChange={(e) => setStudy1(e.target.value)}></textarea>
+            <textarea className={styles.maintextarea} value={study1} onChange={(e) => setStudy1(e.target.value)}></textarea>
           </div>
         </div>
         <div className={styles.stduyImage}>
@@ -129,7 +129,7 @@ const Main = () => {
           </div>
           <div className={styles.text}>
             <p>내용</p>
-            <textarea value={study2} onChange={(e) => setStudy2(e.target.value)}></textarea>
+            <textarea className={styles.maintextarea} value={study2} onChange={(e) => setStudy2(e.target.value)}></textarea>
           </div>
         </div>
         <div className={styles.stduyImage}>
@@ -142,7 +142,7 @@ const Main = () => {
           </div>
           <div className={styles.text}>
             <p>내용</p>
-            <textarea value={study3} onChange={(e) => setStudy3(e.target.value)}></textarea>
+            <textarea className={styles.maintextarea} value={study3} onChange={(e) => setStudy3(e.target.value)}></textarea>
           </div>
         </div>
       </div>
