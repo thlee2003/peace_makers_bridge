@@ -1,0 +1,51 @@
+/* 슬라이드 */
+.content {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.Images {
+  display: flex;
+}
+
+.campaignImage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.campaignImage img {
+  border: 1px solid black;
+  width: 360px;
+  height: 180px;
+  object-fit: cover;
+}
+
+.file {
+  font-size: 16px;
+  margin: 20px;
+}
+
+textarea {
+  font-size: 18px;
+  margin-top: 12px;
+  width: 1000px;
+  height: 280px;
+}
+
+.text {
+  /* display: flex; */
+  text-align: center;
+}
+
+button {
+  width: 300px;
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
