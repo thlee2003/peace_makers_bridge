@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './News.module.css';
 
 import Header from '../../components/header/Header';
+import { dbService } from '../../server/firebase';
 
 const News = () => {
   const [introduction, setIntroduction] = useState('');
@@ -11,6 +12,18 @@ const News = () => {
   const onclick = () => {
     console.log(image);
     console.log(imageName);
+
+    const db = dbService.collection("admin").doc("new");
+
+    db.update({
+      image: image,
+      imagetext: imageName
+    }).then(() => {
+      alert("소개 페이지 업데이트가 완료되었습니다!")
+    }).catch((error) => {
+      console.log(error)
+      alert("오류가 발생하였습니다. 잘못 입력한 부분이 있는지 확인해주세요!")
+    })
   };
 
   const onFileChange = (e, num) => {

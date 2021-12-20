@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Main.module.css';
 
 import Header from '../../components/header/Header';
+import { dbService, storageService } from '../../server/firebase';
 
 const Main = () => {
   const [main1, setMain1] = useState('');
@@ -26,6 +27,21 @@ const Main = () => {
     img10: null,
   });
 
+  useEffect(() => {
+    dbService.collection("admin").doc("mainpage").onSnapshot((doc) => {
+      console.log("Current data: ", doc.data());
+      setMain1(doc.data().maintext1)
+      setMain2(doc.data().maintext2)
+      setStudy1Title(doc.data().edutitle1)
+      setStudy1(doc.data().edutext1)
+      setStudy2Title(doc.data().edutitle2)
+      setStudy2(doc.data().edutext2)
+      setStudy3Title(doc.data().edutitle3)
+      setStudy3(doc.data().edutext3)
+      setNewsTitle(doc.data().newstitle)
+    })
+  }, []);
+
   const onclick = () => {
     console.log(image);
     console.log(main1, main2);
@@ -33,6 +49,33 @@ const Main = () => {
     console.log(study2Title, study2);
     console.log(study3Title, study3);
     console.log(newsTitle);
+
+    const db = dbService.collection("admin").doc("mainpage");
+
+    // 글 관련 DB update, doc updata 사용
+    db.update({
+      maintext1: main1,
+      maintext2: main2,
+      edutitle1: study1Title,
+      edutext1: study1,
+      edutitle2: study2,
+      edutext2: study2Title,
+      edutitle3: study3,
+      edutext3: study3Title,
+      newstitle: newsTitle,
+      image: image
+    }).then(() => {
+      alert("메인 페이지 업데이트가 완료되었습니다!")
+    }).catch((error) => {
+      console.log(error)
+      alert("오류가 발생하였습니다. 잘못 입력한 부분이 있는지 확인해주세요!")
+    })
+
+    const ref = storageService.child('main_page/');
+    const file = image
+    ref.putString(file, 'data_url').then(function(snapshot) {
+    })
+
   };
 
   const onFileChange = (e, num) => {

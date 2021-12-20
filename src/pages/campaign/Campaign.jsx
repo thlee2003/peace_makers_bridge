@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './Campaign.module.css';
 
 import Header from '../../components/header/Header';
+import { dbService } from '../../server/firebase';
 
 const Campaign = () => {
   const [phrase, setPhrase] = useState('');
@@ -24,10 +25,25 @@ const Campaign = () => {
 
   useEffect(() => {
     console.log(video1.split('.be/')[1]);
-    setOutVideo1('https://www.youtube.com/embed/' + video1.split('.be/')[1]);
-    setOutVideo2('https://www.youtube.com/embed/' + video2.split('.be/')[1]);
-    console.log(outVideo1, outVideo2);
-  }, [video1, video2]);
+    dbService.collection("admin").doc("campaign").onSnapshot((doc) => {
+      console.log("Current data: ", doc.data());
+      console.log(doc.data().video1)
+      console.log(setVideo1)
+      setPhrase(doc.data().campaign2)
+      setIntroduction(doc.data().campaign1)
+      setFAQ1Title(doc.data().Q1text)
+      setFAQ1(doc.data().A1text)
+      setFAQ2Title(doc.data().Q2text)
+      setFAQ2(doc.data().A2text)
+      setFAQ3Title(doc.data().Q3text)
+      setFAQ3(doc.data().A3text)
+      setVideo1(doc.data().video1)
+      setVideo2(doc.data().video2)
+    })
+    // console.log(outVideo1, outVideo2);
+    // setOutVideo1('https://www.youtube.com/embed/' + video1.split('.be/')[1]);
+    // setOutVideo2('https://www.youtube.com/embed/' + video2.split('.be/')[1])
+  }, []);
 
   const onclick = () => {
     console.log(image);
@@ -36,6 +52,26 @@ const Campaign = () => {
     console.log(FAQ2Title, FAQ2);
     console.log(FAQ3Title, FAQ3);
     console.log(outVideo1, outVideo2);
+
+    const db = dbService.collection("admin").doc("campaign");
+    db.update({
+      Q1text: FAQ1Title,
+      A1text: FAQ1,
+      Q2text: FAQ2Title,
+      A2text: FAQ2,
+      Q3text: FAQ3Title,
+      A3text: FAQ3,
+      video1: video1,
+      video2: video2,
+      campaign2: phrase,
+      campaign1: introduction,
+      image: image
+    }).then(() => {
+      alert("메인 페이지 업데이트가 완료되었습니다!")
+    }).catch((error) => {
+      console.log(error)
+      alert("오류가 발생하였습니다. 잘못 입력한 부분이 있는지 확인해주세요!")
+    })
   };
 
   const onFileChange = (e, num) => {
